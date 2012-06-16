@@ -1,12 +1,38 @@
-module.exports.name             = 'development';
-module.exports.postgres         = {user: 'tileuser', host: '127.0.0.1', port: 5432};
-module.exports.redis            = {host: '127.0.0.1', 
-                                   port: 6379, 
-                                   idleTimeoutMillis: 1,
-                                   reapIntervalMillis: 1};
-module.exports.windshaft_port   = 8181;
-module.exports.windshaft_host   = '127.0.0.1';
-module.exports.enable_cors      = true;
-module.exports.varnish_host     = 'localhost';
-module.exports.varnish_port     = 6082;
-module.exports.cache_enabled    = false;
+var config = {
+     environment: 'development'
+    ,port: 8181
+    ,host: '127.0.0.1'
+    ,enable_cors: true
+    ,cache_enabled: false
+    ,postgres: {
+        type: "postgis",
+        user: "tileuser",
+        host: '127.0.0.1',
+        port: 5432,
+        extent: "-20005048.4188,-20005048.4188,20005048.4188,20005048.4188",
+        /* experimental
+        geometry_field: "the_geom",
+        extent: "-180,-90,180,90",
+        srid: 4326,
+        */
+        simplify: true
+    }
+    ,redis: {
+        host: '127.0.0.1',
+        port: 6379,
+        idleTimeoutMillis: 1,
+        reapIntervalMillis: 1
+    }
+    ,sqlapi: {
+        protocol: 'http',
+        host: 'localhost.lan',
+        port: 8080,
+        version: 'v1'
+    }
+    ,varnish: {
+        host: 'localhost',
+        port: 6082
+    }
+};
+
+module.exports = config;

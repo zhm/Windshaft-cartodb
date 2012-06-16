@@ -1,12 +1,33 @@
-module.exports.name             = 'test';
-module.exports.postgres         = {user: 'tileuser', host: '127.0.0.1', port: 5432};
-module.exports.redis            = {host: '127.0.0.1', 
-                                   port: 6379, 
-                                   idleTimeoutMillis: 1,
-                                   reapIntervalMillis: 1};
-module.exports.windshaft_port   = 8080;
-module.exports.windshaft_host   = '127.0.0.1';
-module.exports.enable_cors = true;
-module.exports.varnish_host = '';
-module.exports.varnish_port = null;
-module.exports.cache_enabled = false;
+var config = {
+     environment: 'test'
+    ,port: 8888
+    ,host: '127.0.0.1'
+    ,enable_cors: true
+    ,cache_enabled: false
+    ,postgres: {
+        user: "tileuser",
+        host: '127.0.0.1',
+        port: 5432,
+        srid: 4326,
+        extent: "-20005048.4188,-20005048.4188,20005048.4188,20005048.4188",
+        simplify: true
+    }
+    ,redis: {
+        host: '127.0.0.1',
+        port: 6379,
+        idleTimeoutMillis: 1,
+        reapIntervalMillis: 1
+    }
+    ,sqlapi: {
+        protocol: 'http',
+        host: 'localhost.lan',
+        port: 8080,
+        version: 'v1'
+    }
+    ,varnish: {
+        host: '',
+        port: null
+    }
+};
+
+module.exports = config;
